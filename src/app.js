@@ -1,4 +1,4 @@
-import express from 'express'
+import express, { query } from 'express'
 import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import hbs from 'hbs'
@@ -39,7 +39,18 @@ app.get("/about", (req, res) =>{
 })
 
 app.get('/weather', (req, res) =>{
-    res.send('Weather Page')
+    
+    const address = req.query.address
+    console.log(address)
+    if(!address){
+        return res.send({
+            error:'You must send an address property as a query string.'
+        })
+    }
+
+    res.send({
+        address
+    })
 })
 
 app.get('/help/*', (req, res) =>{
