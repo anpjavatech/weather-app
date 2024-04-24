@@ -42,18 +42,15 @@ app.get("/about", (req, res) =>{
 app.get('/weather', (req, res) =>{
     
     const address = req.query.address
-    console.log(address)
     if(!address){
-        return res.send({
+        return res.render('weather',{
             error:'You must send an address property as a query string.'
         })
     }
 
     forecastWeather(address, (error, data)=>{
         if(error){
-            return res.send({
-                error
-            })
+            return res.send({error})
         }
 
         res.send(data)

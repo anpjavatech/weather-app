@@ -1,5 +1,5 @@
 body {
-    
+   
     color: #333333;
     font-family: Arial;
     max-width: 100%;
@@ -18,6 +18,14 @@ body img {
     display: block;
     margin: auto;
     width: 250px;
+}
+
+body form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem;
+    gap: 1rem;
 }
 
 
