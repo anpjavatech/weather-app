@@ -1,7 +1,8 @@
 import express, { query } from 'express'
-import path, { dirname } from 'path';
-import { fileURLToPath } from 'url';
+import path, { dirname } from 'path'
+import { fileURLToPath } from 'url'
 import hbs from 'hbs'
+import forecastWeather from './utils/forecast.js'
 
 const app = express()
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -48,9 +49,16 @@ app.get('/weather', (req, res) =>{
         })
     }
 
-    res.send({
-        address
+    forecastWeather(address, (error, data)=>{
+        if(error){
+            return res.send({
+                error
+            })
+        }
+
+        res.send(data)
     })
+    
 })
 
 app.get('/help/*', (req, res) =>{
