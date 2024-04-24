@@ -3,7 +3,7 @@
 ## Steps to run the code
 
 ```` bash
-Run the nodemon dependency globally, its not included in the locsl dependency.
+Install nodemon dependency globally, its not part of the local dependency.
 
 npm i nodemon -g
 
